@@ -30,6 +30,6 @@
     @endforeach
 
 </div>
-opjwejorknfskdnfoseu
+
 </body>
 </html>

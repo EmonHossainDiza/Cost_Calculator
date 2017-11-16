@@ -13,7 +13,7 @@
         <title>Cost Calculator</title>
 
         <!-- BOOTSTRAP CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{url('/js/bootstrap_min_css.js')}} ">
         <!-- FONT AWESOME CSS -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
         <!-- ALL GOOGLE FONTS -->
@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="header_content_area col-md-12">
                     <div class="header_logo_area col-md-2">
-                        <img src="{{url('/images/background.png')}}"/>
+                        <a href="{{"/"}}" ><img src="{{url('/images/background.png')}}"/></a>
                     </div>
                     <div class="header_text_area col-md-10">
                         <h2>Cost Calculator</h2>

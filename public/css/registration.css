@@ -63,24 +63,32 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 	text-align: left;
 	color: white;
 }
-/*login div css for home page*/
-.login_content {
-	margin: 0px 0px 15px 0px; 
+/*reg div css for home page*/
+.reg_content {
+	margin: 0px 0px 15px 0px;
 }
-.login_content_area { 
+.reg {
+	padding: 70px 0px 70px 0px;
+}
+.container.reg_content_area {
 	background-color: #094954e6;
 }
-.login {
-	padding: 150px 0px 150px 0px;
+.reg_section {
+	text-align: center;
 }
-.login_section  {
-	text-align:center;
-} 
-
 .form-control.loguname {
 	margin-bottom: 15px;
 	text-align:center;
 }
+
+.reg_section h2 {
+	font-family: abel;
+	color: white;
+	font-weight: normal;
+	letter-spacing: 1px;
+	font-size: 25px;
+}
+
 
 /*footer css for home page*/
 .footer_area_text {
@@ -98,8 +106,6 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 	background-color: #246f72;
 }
 .footer_area_text h2 {
-	margin: 0px 0px 0px 0px;
-	/* text-align: center; */
 	font-family: abel;
 	font-size: 16px;
 	font-weight: normal;

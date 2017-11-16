@@ -1,0 +1,46 @@
+/* Medium Layout: 1280px. */
+@media only screen and (min-width: 992px) and (max-width: 1200px) { 
+  
+    
+}
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px) { 
+ .call_us_icon i {
+	color: #fff;
+	background: #adadad;
+	font-size: 12px;
+	padding: 9px;
+	border-radius: 20px;
+}
+.call_us_text p {
+	margin-left: -13px;
+}
+.single_call_us {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0px -6px;
+}
+.social ul li a i {
+	color: #fff;
+	background: #adadad;
+	font-size: 12px;
+	padding: 8px 10px 8px 9px;
+	border-radius: 25px;
+	/* padding-left: 11px; */
+	margin: 0px 1px;
+}
+    
+}
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px) { 
+ .logo a {
+	font-size: 40px;
+}
+    
+}
+/* Wide Mobile Layout: 480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) { 
+.logo a {
+	font-size: 40px;
+}
+}

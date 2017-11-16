@@ -77,10 +77,18 @@ class LoginController extends Controller
 
     public function user_info(){
 
-        $profile_info = (new Login)->get();
-         return view('Profile',compact('profile_info'));
+        $User_Type = session('user_type');
+        if ($User_Type == 'admin' || $User_Type == 'users' )
+        {
+            $profile_info = (new Login)->get();
+            return view('Profile',compact('profile_info'));
+        }
+        else {
 
+            return redirect(url('/'));
+        }
     }
+
 
 
 }

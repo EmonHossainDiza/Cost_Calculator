@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" xmlns:>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +27,9 @@
         Id: {{$p->Id}};
         Phone: {{$p->Phone}};
         User type:{{$p->User_Type}} ;
-            <img src = {{$p->Photo_Path}} />
+            <img href="{{$p->Photo_Path}} " />
+        <img src=" {{ $p->Photo_Path }}" height="100" weight="100">
+
     @endforeach
 
 </div>

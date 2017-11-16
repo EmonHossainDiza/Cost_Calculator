@@ -22,13 +22,13 @@ class RegistrationController extends Controller
         $phone = $request->phone;
         $pass = $request->pass;
         $con_pass = $request->con_pass;
-
+//IMAGE UPLOAD
         $file = Input::file('photo_file');
-        $destinationPath =base_path("images");
+        $destinationPath =('user_img');
         $extension = $file->getClientOriginalExtension();
         $filename = str_random(12).".{$extension}";
         $img = $file->move($destinationPath, $filename);
-
+//IMAGE UPLOAD
 
         $save = (new Registration)->insertdata($name, $email, $phone, $pass,$img);
             try {

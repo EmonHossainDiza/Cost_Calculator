@@ -1,0 +1,106 @@
+/* Base CSS */
+.alignleft {
+    float: left;
+    margin-right: 15px;
+}
+.alignright {
+    float: right;
+    margin-left: 15px;
+}
+.aligncenter {
+    display: block;
+    margin: 0 auto 15px;
+}
+a:focus { outline: 0 solid }
+img {
+    max-width: 100%;
+    height: auto;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 15px;
+    font-weight: 700;
+}
+html,
+body { height: 100% }
+body {
+
+}
+a:hover { text-decoration: none }
+
+/* Remove Chrome Input Field's Unwanted Yellow Background Color */
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+.header {
+	margin: 0px 0px 15px 0px;
+}
+
+.header_content_area {
+	background-color: #095363;
+}
+.header_logo_area img {
+	max-width: 80%;
+	height: 80px;
+	padding: 5px 0px 5px 0px;
+}
+.header_text_area {
+	
+}
+.header_text_area h2 {
+	margin: 18px 0px 0px -70px;
+	font-size: 40px;
+	font-family: oswald;
+	font-weight: normal;
+	letter-spacing: 4px;
+	text-align: left;
+	color: white;
+}
+
+.login_content {
+	margin: 0px 0px 15px 0px; 
+}
+.login_content_area { 
+	background-color: #094954e6;
+}
+.login {
+	padding: 150px 0px 150px 0px;
+}
+.login_section  {
+	text-align:center;
+} 
+
+.form-control.loguname {
+	margin-bottom: 16px;
+	text-align:center;
+}
+
+
+.footer_area_text {
+	padding: 5px 0px 5px 0px;
+	text-align: center;
+}
+.footer_area_text h2 {
+	padding: 5px 0px 5px 0px;
+	text-align: center;
+}
+
+.footer_area_text {
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	background-color: #246f72;
+}
+.footer_area_text h2 {
+	margin: 0px 0px 0px 0px;
+	/* text-align: center; */
+	font-family: abel;
+	font-size: 16px;
+	font-weight: normal;
+	letter-spacing: 1px;
+	color:white;
+}

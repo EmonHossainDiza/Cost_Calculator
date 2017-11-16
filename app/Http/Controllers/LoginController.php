@@ -37,19 +37,18 @@ class LoginController extends Controller
                     [
 
                         'user_type'=>$value->User_Type,
-                        'user_email'=>$value->Email,
-                        'user_name'=>$value->Name
+                        'user_email'=>$value->Email
 
                 ]
             );
-                //$insert_log= (new Login)->log();
+                $insert_log= (new Login)->log();
 
 
                 //dd($profile_info);
 
                 //return view('Profile', compact('profile_info'));
 
-                return redirect("/".session('user_name'));
+                return redirect("/profile");
 
 
 

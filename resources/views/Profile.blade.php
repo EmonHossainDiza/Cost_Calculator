@@ -27,6 +27,7 @@
         Id: {{$p->Id}};
         Phone: {{$p->Phone}};
         User type:{{$p->User_Type}} ;
+            <img src = {{$p->Photo_Path}} />
     @endforeach
 
 </div>

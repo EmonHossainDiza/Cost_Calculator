@@ -12,11 +12,17 @@
     <body>
     <div class="login-wrap">
         <form class="form-signin" action="{{url('/logincheck')}}" method="post">
-        {{csrf_field()}}
-        <input type="text" class="form-control" name="email" placeholder="User Email" autofocus>
-        <input type="password" class="form-control" name="pass" placeholder="Password">
+            {{csrf_field()}}
+            <input type="text" class="form-control" name="email" placeholder="User Email" autofocus>
+            <input type="password" class="form-control" name="pass" placeholder="Password">
 
-        <button class="btn btn-lg btn-login btn-block" type="submit" name="login">Sign in</button>
+            <button class="btn btn-lg btn-login btn-block" type="submit" name="login">Sign in</button>
+
+    </div>
+
+
+
+        <a href="{{"/Registration"}}">Registration</a>
 
     </div>
 

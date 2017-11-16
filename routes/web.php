@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Route::post('/logincheck','LoginController@validate_user');
 
-Route::get('/{name}','LoginController@user_info');
-
+Route::get('/profile','LoginController@user_info');
+Route::get('/Registration','RegistrationController@index');
+Route::post('/Reg_save','RegistrationController@insert_reg_data');
 
 Route::get('/Logout','LoginController@logout');

@@ -20,5 +20,5 @@ Route::post('/logincheck','LoginController@validate_user');
 Route::get('/profile','LoginController@user_info');
 Route::get('/Registration','RegistrationController@index');
 Route::post('/Reg_save','RegistrationController@insert_reg_data');
-
+Route::post('/add_category','UserController@add_category');
 Route::get('/Logout','LoginController@logout');

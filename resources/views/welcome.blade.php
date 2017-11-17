@@ -73,7 +73,7 @@
     </div>
 
     <div class="footer">
-        <div class="container" >
+        <div class="container-fluid" >
             <div class="row">
                 <div class="footer_area_text col-md-12">
                     <h2>All rights reserved by <a href="http://ehdiza.com">Emon Hossain Diza</a>  </h2>
@@ -82,9 +82,6 @@
         </div>
 
     </div>
-
-
-
 
 
 

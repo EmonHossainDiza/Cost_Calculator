@@ -245,3 +245,35 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 	padding: 5px 12px;
 	text-size:18px;
 }
+
+ .well03 {
+	text-align: right;
+	padding: 16px 0px 0px 0px;
+	display: inline-block;
+}
+
+ .well03 button{
+	margin: 0px 0px 0px 10px;
+}
+
+.well_photo {
+	text-align: center;
+}
+.well_photo img {
+	width: 60%;
+	height: 150px;
+}
+
+.well_profile_edit_input {
+	padding: 20px 20px 20px 20px;
+	text-align: center;
+}
+.well_profile_edit_input input {
+	margin: 10px;
+	
+}
+
+.sub_cat_bottom_line {
+	border-bottom: 1px solid #80808080;
+}
+ 

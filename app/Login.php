@@ -20,17 +20,7 @@ class Login extends Model
         return $user;
     }
 
-    public function get(){
 
-        $user_email=session('user_email');
-
-
-        $profile_info= DB::table('users')
-            ->where('Email',$user_email)
-            ->limit(1)
-            ->get();
-        return $profile_info;
-    }
 
     public function log(){
 

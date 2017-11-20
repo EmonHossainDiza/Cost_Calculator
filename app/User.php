@@ -2,28 +2,59 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
-class User extends Authenticatable
+
+use Carbon\Carbon;
+
+class User extends Model
 {
-    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    public function get(){
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+        $user_email=session('user_email');
+
+
+        $profile_info= DB::table('users')
+            ->where('Email',$user_email)
+            ->limit(1)
+            ->get();
+        return $profile_info;
+    }
+
+    public function edit_profile($User_Email,$phone,$img){
+
+
+        $data=array(
+            'Phone'=>$phone,
+            'Photo_Path'=>$img,
+        );
+
+
+        $edit_profile=DB::table('users')
+            ->where('Email',$User_Email)
+            ->update($data);
+
+
+    }
+
+    public function update_user_pass($User_Email,$pass){
+
+
+    $data=array(
+        'Password'=>$pass,
+    );
+
+
+    $update_user_pass=DB::table('users')
+        ->where('Email',$User_Email)
+        ->update($data);
+
+
+}
+
+
+
+
 }

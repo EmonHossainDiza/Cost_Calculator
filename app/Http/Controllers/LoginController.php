@@ -10,7 +10,8 @@ use Session;
 
 class LoginController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
 
     }
@@ -19,42 +20,42 @@ class LoginController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function validate_user(request $request){
-        $user_email=$request->email;
-        $user_pass=$request->pass;
+    public function validate_user(request $request)
+    {
+        $user_email = $request->email;
+        $user_pass = $request->pass;
 
-        $check= (new Login)->validate($user_email,$user_pass);
+        $check = (new Login)->validate($user_email, $user_pass);
 
-        if (count($check)>0){
+        if (count($check) > 0) {
 
 //            echo $check;
-            foreach ($check as $value)
-            {
+            foreach ($check as $value) {
+//                $uName=$value->Name;
 
 
                 session
                 (
                     [
 
-                        'user_type'=>$value->User_Type,
-                        'user_email'=>$value->Email
+                        'user_type' => $value->User_Type,
+                        'user_email' => $value->Email
 
-                ]
-            );
-                $insert_log= (new Login)->log();
+                    ]
+                );
+                $insert_log = (new Login)->log();
 
 
                 //dd($profile_info);
 
                 //return view('Profile', compact('profile_info'));
 
+//                return redirect("/profile/".$uName);
                 return redirect("/profile");
 
 
-
             }
-        }
-        else{
+        } else {
 
             //return redirect('/');
             echo "<script type=\"text/javascript\" >
@@ -66,29 +67,14 @@ class LoginController extends Controller
 
     }
 
-    public function logout(){
+    public function logout()
+    {
 
-        $logout_log= (new Login)->logout();
+        $logout_log = (new Login)->logout();
 
         session::flush();
         return redirect(url('/'));
 
     }
-
-    public function user_info(){
-
-        $User_Type = session('user_type');
-        if ($User_Type == 'admin' || $User_Type == 'users' )
-        {
-            $profile_info = (new Login)->get();
-            return view('Profile',compact('profile_info'));
-        }
-        else {
-
-            return redirect(url('/'));
-        }
-    }
-
-
 
 }

@@ -41,27 +41,27 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{"/"}}">
-                 <img src="{{url('/images/background.png')}}"/>
+                <img src="{{url('/images/background.png')}}"/>
             </a><h4>Track your income & expense</h4>
 
         </div>
     @foreach($profile_info as $p)
         <!-- Top Menu Items -->
-        <ul class="nav navbar-right top-nav">
-            <li><img src=" {{$p->Photo_Path}}" height="100" weight="100"/>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$p->Name}} <b class="fa fa-angle-down"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{url('/profile_edit')}}"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
-                    <li><a href="{{url('/change_password')}}"><i class="fa fa-fw fa-user"></i> Change Password</a></li>
-                    <li class="divider"></li>
-                    <li><a href="{{url('/Logout')}}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
-                </ul>
-            </li>
-        </ul>
+            <ul class="nav navbar-right top-nav">
+                <li><img src=" {{$p->Photo_Path}}" height="100" weight="100"/>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$p->Name}} <b class="fa fa-angle-down"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{url('/profile_edit')}}"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+                        <li><a href="{{url('/change_password')}}"><i class="fa fa-fw fa-user"></i> Change Password</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{url('/Logout')}}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
     @endforeach
-        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
@@ -100,43 +100,37 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- Page Heading -->
+            @foreach($get_cat_id as $g)
             <div class="row" id="main">
                 <div class="col-sm-12 col-md-12 well" id="content">
                     <div class="col-sm-6 col-md-6 well2 " >
-                        <h2>Add Category</h2>
+                        <h2>Category: {{$g->category_name}} </h2>
+                        <p>{{$g->date}} </p>
                     </div>
-                        <div class="col-sm-6 col-md-6 well3 " >
-                            <button  class="btn btn-default btn-sm"  data-panel-id="" onclick="selectid(this)"><i class="fa fa-plus" aria-hidden="true"></i> Add Category
-                            </button>
-                        </div>
-
+                    <div class="col-sm-6 col-md-6 well3 " >
+                        <button  class="btn btn-default btn-sm"  data-panel-id="{{$g->id}}" onclick="add_sub_category(this)"><i class="fa fa-plus" aria-hidden="true"></i>
+                        Add Sub Category</button>
+                    </div>
                 </div>
             </div>
-            @foreach($get_category as $g)
-            <div class="row" id="main">
-                <div class="col-sm-12 col-md-12 well" id="content">
-                    <a href="{{url('/category/'.$g->id)}}">
-                        <div class="col-sm-8 col-md-8 well2 " >
-                     <h2>{{$g->category_name}} </h2>
-                     <p>{{$g->date}} </p>
-                 </div>
-                    </a>
-                    <form class="form-group" action="{{url('/delete_category')}}" enctype="multipart/form-data" method="post" >
-                        {{csrf_field()}}
-                  <div class="col-sm-4 col-md-4 well03 " >
-                        <input name="category_id"  type="text" value="{{$g->id}}" hidden  required>
-                        <button type="button"  class="btn btn-default btn-sm"  data-panel-id="{{$g->id}} " onclick="edit_category(this)"/><i class="fa fa-pencil-square-o" aria-hidden="true"> Edit</i>
-                      </button>
-                        <button  class="btn btn-default btn-sm" type="submit"><i class="fa fa-ban" aria-hidden="true"> Delete</i>
-                        </button>
-
-                  </div>
-                     </form>
-
-                </div>
-                 </div>
         @endforeach
-            <!-- /.row -->
+            @foreach($get_sub_cat as $s_cat)
+            <div class="row" id="main">
+                <div class="col-sm-12 col-md-12 sub_cat_bottom_line" id="content">
+                    <a href="{{url('/sub_category/'.$s_cat->id)}}">
+                        <div class="col-sm-8 col-md-8 well2 " >
+                        <h2>{{$s_cat->name}}</h2>
+                        <p>{{$s_cat->type}}</p>
+                        <p>{{$s_cat->date}} </p>
+                    </div>
+                    <div class="col-sm-4 col-md-4 well3 " >
+
+                    </div>
+                    </a>
+                </div>
+            </div>
+        @endforeach
+        <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
     </div>
@@ -165,54 +159,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">Add Category</h4>
-                </br>
-                <form class="form-group" action="{{url('/add_category')}}" enctype="multipart/form-data" method="post" >
-                    {{csrf_field()}}
-                    <input type="text" class="form-control loguname" name="category_name" placeholder="Add Category Name" required>
-                    <input name="date"  id="texted"  hidden  required>
-                </br>
-                    <button class="btn btn-default btn-sm" type="submit" name="Reg">Save</button>
-                </form>
-{{--date picker--}}
-                <p hidden id="demo2"></p>
-                <p  hidden id="demo22"></p>
-                <script>
-                    $( function() {
-                        var d = new Date();
-                        var n = d.toLocaleString([],{year: 'numeric', month: 'short',day: 'numeric'});
-                        var nn = d.toLocaleString([],{hour: 'numeric',minute:'numeric', hour12: true });
-                        document.getElementById("demo2").innerHTML = n;
-                        document.getElementById("demo22").innerHTML = nn;
-
-                        var a = $('#demo2').html();
-                        var b = $('#demo22').html();
-                        var c= ', ';
-                        var text = a + c +b ;
-                        $('#texted').val(text);
-                    } );
-
-                </script>
 
                 <div id="txtHint"></div>
-
-
-            </div>
-
-
-        </div>
-    </div>
-
-</div>
-
-<div id="myModal2" class="modal" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">Edit Category Name</h4>
-                <div id="txtHint1"></div>
 
 
             </div>
@@ -254,20 +202,18 @@
 <script>
 
     var modal1 = document.getElementById('myModal1');
-    var modal2 = document.getElementById('myModal2');
 
     var span1 = document.getElementsByClassName("close")[0];
-    var span2 = document.getElementsByClassName("close")[1];
 
-    function selectid(x) {
+    function add_sub_category(x) {
         modal1.style.display = "block";
         btn = $(x).data('panel-id');
 
         //alert(btn);
 
         $.ajax({
-            type:'POST',
-            url:'{{url('/add_category')}}'+btn,
+            type:'GET',
+            url:'{{url('/add_sub_category_modal')}}',
             data:{'id':btn},
             cache: false,
             success:function(data)
@@ -283,32 +229,8 @@
 
     }
 
-    function edit_category(x) {
-        modal2.style.display = "block";
-        btn = $(x).data('panel-id');
 
-        //alert(btn);
-
-        $.ajax({
-            type:'GET',
-            url:'{{url('/update_category')}}',
-            data:{'id':btn},
-            cache: false,
-            success:function(data)
-            {
-                //alert("Restaurant request accepted");
-                //alert(data);
-                $('#txtHint1').html(data);
-
-            }
-
-        });
-
-
-
-
-    }
-//modal 1 span 1
+    //modal 1 span 1
     span1.onclick = function() {
         modal1.style.display = "none";
     }
@@ -319,60 +241,50 @@
             modal1.style.display = "none";
         }
     }
-//modal 2 span 2
-    span2.onclick = function() {
-        modal2.style.display = "none";
-    }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal2) {
-            modal2.style.display = "none";
-        }
-    }
 
 
 </script>
 
 {{--<script>--}}
 
-    {{--var modal1 = document.getElementById('myModal2');--}}
+{{--var modal1 = document.getElementById('myModal2');--}}
 
-    {{--var span1 = document.getElementsByClassName("close")[0];--}}
+{{--var span1 = document.getElementsByClassName("close")[0];--}}
 
-    {{--function selectid(x) {--}}
-        {{--modal1.style.display = "block";--}}
-        {{--btn = $(x).data('panel-id');--}}
+{{--function selectid(x) {--}}
+{{--modal1.style.display = "block";--}}
+{{--btn = $(x).data('panel-id');--}}
 
-        {{--//alert(btn);--}}
+{{--//alert(btn);--}}
 
-        {{--$.ajax({--}}
-            {{--type:'POST',--}}
-            {{--url:'{{url('/edit_category')}}'+btn,--}}
-            {{--data:{'id':btn},--}}
-            {{--cache: false,--}}
-            {{--success:function(data)--}}
-            {{--{--}}
-                {{--//alert("Restaurant request accepted");--}}
-                {{--//alert(data);--}}
-                {{--$('#txtHint').html(data);--}}
-                {{--//$('#txtHint').value(data);--}}
-            {{--}--}}
+{{--$.ajax({--}}
+{{--type:'POST',--}}
+{{--url:'{{url('/edit_category')}}'+btn,--}}
+{{--data:{'id':btn},--}}
+{{--cache: false,--}}
+{{--success:function(data)--}}
+{{--{--}}
+{{--//alert("Restaurant request accepted");--}}
+{{--//alert(data);--}}
+{{--$('#txtHint').html(data);--}}
+{{--//$('#txtHint').value(data);--}}
+{{--}--}}
 
-        {{--});--}}
+{{--});--}}
 
 
-    {{--}--}}
-    {{--span1.onclick = function() {--}}
-        {{--modal1.style.display = "none";--}}
-    {{--}--}}
+{{--}--}}
+{{--span1.onclick = function() {--}}
+{{--modal1.style.display = "none";--}}
+{{--}--}}
 
-    {{--// When the user clicks anywhere outside of the modal, close it--}}
-    {{--window.onclick = function(event) {--}}
-        {{--if (event.target == modal1) {--}}
-            {{--modal1.style.display = "none";--}}
-        {{--}--}}
-    {{--}--}}
+{{--// When the user clicks anywhere outside of the modal, close it--}}
+{{--window.onclick = function(event) {--}}
+{{--if (event.target == modal1) {--}}
+{{--modal1.style.display = "none";--}}
+{{--}--}}
+{{--}--}}
 
 
 {{--</script>--}}
